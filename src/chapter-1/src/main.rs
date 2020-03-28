@@ -1,3 +1,12 @@
 fn main() {
-    println!("Hello, world!");
+    let a = 1;
+    println!("a:{}",a);
+    let a = 2;
+    println!("a:{}",a);
+
+    let mut a = 1;
+    println!("a:{}",a);
+    a = 2;
+    println!("a:{}",a);
 }
+
