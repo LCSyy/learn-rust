@@ -1,7 +1,7 @@
-use actix_web::{ web, App,  HttpServer };
+mod api;
 
-mod universe_api;
-mod app_api;
+use actix_web::{ web, App,  HttpServer };
+use api::{ universe, app };
 
 #[actix_rt::main]
 async fn main() -> std::io::Result<()> {
@@ -9,10 +9,10 @@ async fn main() -> std::io::Result<()> {
         App::new()
         .service(
             web::scope("/app")
-            .route("/register", web::post().to(app_api::app_reigster))
-            .route("/start", web::post().to(app_api::app_start))
+            .route("/register", web::post().to(app::app_reigster))
+            .route("/start", web::post().to(app::app_start))
         )
-        .default_service(web::route().to(universe_api::index))
+        .default_service(web::route().to(universe::index))
     })
     .bind("127.0.0.1:9001")?
     .run()
