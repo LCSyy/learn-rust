@@ -1,7 +1,5 @@
-mod api;
-
+use actix_app::api::{ universe, app };
 use actix_web::{ web, App,  HttpServer };
-use api::{ universe, app };
 
 #[actix_rt::main]
 async fn main() -> std::io::Result<()> {

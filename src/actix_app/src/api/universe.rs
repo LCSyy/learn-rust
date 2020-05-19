@@ -1,6 +1,6 @@
 use actix_web::{ HttpRequest, HttpResponse, Responder };
 
-pub async fn index(req: HttpRequest) -> impl Responder {
-    println!("{}",req.path());
-    HttpResponse::Ok().body("Hello world!")
+pub async fn index(_req: HttpRequest) -> impl Responder {
+    println!("default index handler");
+    HttpResponse::Ok().body("{\"msg\":Hello world!}")
 }
