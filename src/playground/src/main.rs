@@ -1,9 +1,13 @@
-/*
+/* MVC
 ---> View  --> Controller
 |              |
 |              |
 |              |
 <--- Model <----
+*/
+
+/* MVVM
+
 */
 struct View {
     controller: Controller,
