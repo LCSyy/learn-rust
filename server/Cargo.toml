@@ -1,5 +1,5 @@
 [package]
-name = "engineering"
+name = "server"
 version = "0.1.0"
 authors = ["chuns <chuns.liu@foxmail.com>"]
 edition = "2018"
