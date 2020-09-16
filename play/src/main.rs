@@ -3,10 +3,10 @@ use std::{
     io::{ Write },
 };
 
-const HOST_ADDR: &'static str = "47.107.106.105:8081";
+const HOST_ADDR: &'static str = "127.0.0.1:9543";
 
 fn main() {
     let mut stream = TcpStream::connect(HOST_ADDR).unwrap();
-    stream.write("self:1233;srv:1234".as_bytes()).unwrap();
+    stream.write("1;111;2562;This is a data from client, Hello server!".as_bytes()).unwrap();
 }
 
