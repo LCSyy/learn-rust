@@ -1,11 +1,3 @@
-use app::rf::App;
-
-fn main() -> std::io::Result<()> {
-    App::new().exec();
-
-    Ok(())
-}
-
 // use rf::{ App, Engine };
 
 // #[derive(rf::Object, rf::Widget)]
@@ -46,5 +38,16 @@ fn main() -> std::io::Result<()> {
 //         })
 //         .property("Version","1.0.0")
 //     )
-//     .exec()
+//     .run()
 // }
+
+use app::rf::{ App, Engine };
+
+fn main() {
+    App::new()
+    .name("rust app")
+    .engine(
+        Engine::new().source("res://main.rf")
+    )
+    .run();
+}
