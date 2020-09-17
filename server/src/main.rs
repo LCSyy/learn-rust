@@ -2,18 +2,16 @@
 // server.register(self_code,auth_code)
 //   format: {msg_type;self_code;auth_code}
 // client.connect(self_code,peer_code)
-//   format: {msg_type;self_code,server_code,data}
+//   format: {msg_type;self_code;server_code;data}
 
 use std::{
-    net::{ TcpListener, IpAddr, Ipv4Addr },
-    io::Read,
-    collections::{ HashMap }
+    net::{ TcpListener },
+    io::Read
 };
 
 const SERVER_ADDR: &'static str = "127.0.0.1:9543";
 
 fn main() {
-    let mut servers: HashMap<&str,String> = HashMap::new();
     let listener = TcpListener::bind(SERVER_ADDR).unwrap();
     for stream in listener.incoming() {
         match stream {
