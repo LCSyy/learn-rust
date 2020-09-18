@@ -40,7 +40,7 @@ fn main() {
 mod algo {
 
     /// 选择排序 selection sort
-    /// 思想：从待排序的序列中选择最小的元素，将它放到已排序序列的末尾，知道未排序的元素个数为零。
+    /// 思想：从待排序的序列中选择最小的元素，将它放到已排序序列的末尾，直到未排序的元素个数为零。
     pub fn selection_sort<T: PartialOrd>(a: &mut [T]) {
         for i in 0..a.len() {
             for j in (i+1)..a.len() {
@@ -77,5 +77,10 @@ mod algo {
                 }
             }
         }
+    }
+
+    /// 希尔排序 shell sort
+    pub fn shell_sort<T:PartialOrd>(a: &mut [T]) {
+        
     }
 }
