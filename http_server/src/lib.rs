@@ -1,9 +1,10 @@
 mod cxfw;
+mod session;
 
-use actix_files::Files;
 use actix_web::{
     Scope,
     web::{
+        self,
         ServiceConfig
     }
 };
@@ -11,12 +12,6 @@ use actix_web::{
 use cxfw::{ writer };
 
 pub fn app_config(cfg: &mut ServiceConfig) {
-    cfg
-    .service(Files::new("/", "./data/web/").index_file("index.html"))
-    .service(
-        Scope::new("/api")
-        .service(
-            Scope::new("/writer").configure(writer::config)
-        )
-    );
+    cfg.service(Scope::new("/writer").configure(writer::config))
+    .service(web::scope("/session").configure(session::config));
 }

@@ -1,5 +1,4 @@
 use actix_web::{
-    Scope,
     Responder,
     HttpResponse,
     web::{
@@ -20,7 +19,7 @@ pub fn config(cfg: &mut ServiceConfig) {
 
     cfg
     .service(
-        Scope::new("/users")
+        web::scope("/users")
         .route("", web::post().to(add))
         .route("/{id}", web::get().to(get))
         .route("/{id}", web::delete().to(del))
