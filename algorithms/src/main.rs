@@ -4,8 +4,8 @@
 //! - 冒泡
 //! - 插入
 //! - 希尔
-//! - 快速
 //! - 归并
+//! - 快速
 //! - 堆
 //! - 基数
 //! 查找
@@ -16,7 +16,8 @@
 use algorithms::{
     selection_sort,
     bubble_sort,
-    insertion_sort
+    insertion_sort,
+    shell_sort,
 };
 
 fn main() {
@@ -41,4 +42,10 @@ fn main() {
         println!("{}", n);
     }
     
+    println!("shell sort:");
+    let mut c = [235,36,373452,232,2535,3632,23425];
+    shell_sort(&mut c);
+    for n in c.iter() {
+        println!("{}", n);
+    }
 }

@@ -13,7 +13,7 @@ pub fn selection_sort<T: PartialOrd>(a: &mut [T]) {
 }
 
 /// 冒泡排序 bubble sort
-/// 思想是：比较相邻元素，大的在前，则交换位置；每次遍历都会找到最大的元素，重复比较，则到序列中没有元素需要比较。
+/// 思想是：从无序序列末尾开始，比较相邻元素，大的在前，小的在后时，则交换位置；每次遍历都会找到最小的元素，且被交换到最前面位置，重复比较，则到序列中没有元素需要比较。
 pub fn bubble_sort<T: PartialOrd>(a: &mut [T]) {
     for i in 0..a.len() {
         for j in 0..a.len() - 1 - i {
@@ -41,6 +41,29 @@ pub fn insertion_sort<T: PartialOrd>(a: &mut [T]) {
 }
 
 /// 希尔排序/缩小增量排序 shell sort
+/// 按增量进行分组，对每组分别进行插入排序，直到分组只有一组。
 pub fn shell_sort<T:PartialOrd>(a: &mut [T]) {
-    // ... to do
+    let mut inc = a.len() / 2;
+    while inc >= 1 {
+        for g in 0..inc {
+            let mut i = g + inc;
+            while i < a.len() {
+                if a[i-inc] > a[i] {
+                    let mut j = i;
+                    while j > g && a[j-inc] > a[j] {
+                        a.swap(j-inc, j);
+                        j -= inc;
+                    }
+                }
+                i += inc;
+            }
+        }
+        inc /= 2;
+    }
+}
+
+/// 归并排序
+pub fn merge_sort<T: PartialOrd>(a: &mut [T]) {
+    // ...
+    println!("merge sort, element size: {}", a.len());
 }
