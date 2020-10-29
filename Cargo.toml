@@ -1,0 +1,8 @@
+[workspace]
+
+members = [
+    "algorithms",
+    "play-thread",
+    "play-async"
+]
+

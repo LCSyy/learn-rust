@@ -1,5 +1,0 @@
-use rf::app;
-
-ListView: app::ListView {
-
-}
