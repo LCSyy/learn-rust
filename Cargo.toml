@@ -2,6 +2,7 @@
 
 members = [
     "algorithms",
-    "lr-docs"
+    "play-thread",
+    "play-async"
 ]
 
