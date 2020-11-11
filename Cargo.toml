@@ -3,6 +3,8 @@
 members = [
     "algorithms",
     "play-thread",
-    "play-async"
+    "play-async",
+    "learn-serde",
+    "learn-actix"
 ]
 
