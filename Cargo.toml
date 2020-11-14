@@ -4,7 +4,8 @@ members = [
     "algorithms",
     "play-thread",
     "play-async",
-    "play-pg"
+    "play-pg",
+    "learn-serde"
 ]
 
 exclude = [
