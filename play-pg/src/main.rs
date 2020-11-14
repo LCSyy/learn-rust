@@ -5,7 +5,6 @@ use std::env;
 use postgres::{
     Client,
     NoTls,
-    types::Timestamp,
 };
 
 
@@ -23,10 +22,10 @@ fn main() {
     let mut accounts = vec![];
     for row in client.query("SELECT * FROM accounts;",&[]).expect("No rows") {
         accounts.push(model::Accounts {
-            id: row.get(0),
-            account: row.get(1),
-            passwd: row.get(2),
-            description: row.get(3),
+            id:              row.get(0),
+            account:         row.get(1),
+            passwd:          row.get(2),
+            description:     row.get(3),
             create_datetime: row.get(4),
         });
     }
@@ -35,6 +34,7 @@ fn main() {
 }
 
 mod model {
+    use std::time::SystemTime;
     use postgres::types::Timestamp;
     
     pub struct Accounts {
@@ -42,7 +42,7 @@ mod model {
         pub account: String,
         pub passwd: String,
         pub description: String,
-        pub create_datetime: Timestamp<String>,
+        pub create_datetime: Timestamp<SystemTime>,
     }
 }
 

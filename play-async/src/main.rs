@@ -22,12 +22,3 @@
 fn main() {
     println!("Hello, world!");
 }
-
-async tasks() {
-    // 创建两个异步任务
-    let future_one = some_async_task("");
-    let future_two - some_async_task2("");
-
-    // 运行并等待异步任务完成
-    join!(future_one,future_two);
-}
