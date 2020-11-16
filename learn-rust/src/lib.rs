@@ -27,6 +27,15 @@
 //! 
 //! [The Little Book of Rust Macros](https://danielkeep.github.io/tlborm/book/index.html)
 //! 
+//! Rust源码解析过程：
+//! - 标记解析(tokenization)
+//! - 语法解析(parsing) - 生成AST
+//! - 宏处理
+//! 
+//! 标记树：介于标记解析与语法处理之间
+//! 分组(...),[...],{...}、标记
+//! 
+//! 
 
 #[macro_export]
 macro_rules! me_str {
@@ -36,4 +45,3 @@ macro_rules! me_str {
         )*
     };
 }
-
