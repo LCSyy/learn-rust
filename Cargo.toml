@@ -8,5 +8,6 @@ members = [
 ]
 
 exclude = [
-    "play-actix"
+    "play-actix",
+    "learn-rust"
 ]
