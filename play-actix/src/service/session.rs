@@ -1,11 +1,12 @@
+use std::error::Error;
 use actix_web::{
     Scope, Route, Responder, HttpResponse, 
     web,
     http::{Method}
 };
 use sqlx::postgres::PgPool;
-use sqlx::{Executor,Row};
-use serde::{Deserialize};
+use sqlx::{Executor,Row,FromRow};
+use serde::{Serialize,Deserialize};
 
 pub fn service(scope: &str) -> Scope {
     Scope::new(scope)
@@ -14,14 +15,13 @@ pub fn service(scope: &str) -> Scope {
     .route("/logout", Route::new().method(Method::GET).to(logout))
 }
 
-#[derive(Debug)]
-#[derive(sqlx::FromRow)]
+#[derive(Debug, Serialize, sqlx::FromRow)]
 struct User {
     id: i32,
     account: String,
     password: String,
     name: String,
-    remark: String,
+    remark: Option<String>,
 }
 
 #[derive(Deserialize)]
@@ -29,34 +29,25 @@ struct RegisterParam {
     account: String,
     password: String,
     name: String,
-    remark: String,
 }
 
 async fn register(pool: web::Data<PgPool>, body: web::Json<RegisterParam>) -> impl Responder {
     let mut tx = pool.into_inner().begin().await.unwrap();
     
-    if let Ok(row) = tx.fetch_one(sqlx::query(r#"insert into users (account,"password","name",remark) values ($1,$2,$3,$4) returning *;"#)
-        .bind(body.account.clone())
-        .bind(body.password.clone())
-        .bind(body.name.clone())
-        .bind(body.remark.clone())).await
+    match tx.fetch_one(sqlx::query(r#"insert into users (account,"password","name") values ($1,$2,$3) returning *;"#)
+        .bind(body.account.clone()).bind(body.password.clone()).bind(body.name.clone())).await
     {
-        let u = User {
-            id: row.get("id"),
-            account: row.get("account"),
-            password: row.get("password"),
-            name: row.get("name"),
-            remark: row.get("remark")
-        };
-        
-        tx.commit().await;
-
-        return HttpResponse::Ok().body(format!("{:#?}",u));
+        Ok(row) => {
+            let u = User::from_row(&row).unwrap();
+            tx.commit().await;
+    
+            return HttpResponse::Ok().json(u);
+        },
+        Err(e) => {
+            tx.rollback().await;
+            return HttpResponse::Ok().body(format!("[ERROR] {}",e));
+        }
     }
-
-    tx.rollback().await;
-
-    HttpResponse::Ok().body("register failed!")
 }
 
 #[derive(Deserialize)]
