@@ -37,6 +37,8 @@
 //! 
 //! 
 
+pub mod trait_extension_method;
+
 #[macro_export]
 macro_rules! me_str {
     ( $( $key:tt : $val:expr ),* ) => {
