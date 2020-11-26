@@ -2,6 +2,9 @@
 
 members = [
     "algorithms",
+    "basic_concepts",
+    "basic_types",
+    
     "play-thread",
     "play-async",
     "play-pg",
