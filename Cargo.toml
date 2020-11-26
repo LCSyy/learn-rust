@@ -4,10 +4,12 @@ members = [
     "algorithms",
     "play-thread",
     "play-async",
-    "play-pg"
+    "play-pg",
+    "play-bevy"
 ]
 
 exclude = [
     "play-actix",
-    "learn-rust"
+    "learn-rust",
+    "play-wgpu"
 ]
