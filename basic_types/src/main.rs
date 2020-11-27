@@ -47,14 +47,20 @@
 //! 
 
 fn main() {
-    let r: u8 = 100;
-    let g = 200u8;
-    let b = 255u8;
+    // 整数类型字面值各种写法
+    let r: u8 = 100; // 十进制
+    let g = 200u8; // 在数值后添加类型后缀
+    let b = 0xffu8; // 十六进制表示以0x开头
+    let a = 0o377u8; // 八进制表示以0o开头
+    let f = 0b1111_1111u8; // 二进制表示以0b开头
+    // 字节字面值，可用表示所有ASCII以及转义字符
+    let ch = b'1'; // 字节值，使用u8类型表示。它不能添加后缀
 
     let multi = i32::from(r) * i32::from(g) * i32::from(b);
     println!("{} x {} x {} = {}", r, g, b, multi);
+    println!("{},{},{}", a, f, ch);
 
-    let big_num = 100_000_0001_u64;
+    let big_num = 123_456_789_u64;
     println!("{}",big_num);
 
     // byte不能使用类型后缀。
@@ -66,12 +72,16 @@ fn main() {
     let radius: f64 = 1.234;
     let area = PI * radius.powi(2);
     println!("area: {}", area);
+    println!("{}",34.6-34.0);
 
+    // bool类型的值占一个字节，有 true 或 false 两个可选值。
     let rust_ok: bool = true;
     if rust_ok {
         println!("Rust OK!");
     }
 
+    // char类型与在C/C++等语言中的概念有些差异。
+    // Rust中char类型占四个字节。
     let a = 'A';
     println!("char: {}", a);
     let b: char = 'B';
@@ -79,11 +89,13 @@ fn main() {
     let c = char::from(b'C');
     println!("char: {}", c);
 
+    // 元组类型
     let tup = (1, 'A', b'A', 3.12);
     let (id, ch, cb, cost) = tup;
     println!("{}, {}, {}, {}", id, ch, cb, cost);
     println!("({}, {}, {}, {})", tup.0, tup.1, tup.2, tup.3);
 
+    // 数组类型，具有固定长度。
     let arr = [3,2,1];
     println!("{}", arr.len());
     let arr: [u8; 4] = [0, 255, b'A', 0xff];

@@ -4,6 +4,7 @@ members = [
     "algorithms",
     "basic_concepts",
     "basic_types",
+    "basic_funcs",
     
     "play-thread",
     "play-async",
