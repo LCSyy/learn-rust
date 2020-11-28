@@ -5,15 +5,16 @@ members = [
     "basic_concepts",
     "basic_types",
     "basic_funcs",
+    "control_flows",
+
+    "std_fs",
     
-    "play-thread",
-    "play-async",
-    "play-pg",
-    "play-bevy"
+    "play-async"
 ]
 
 exclude = [
     "play-actix",
     "learn-rust",
-    "play-wgpu"
+    "play-wgpu",
+    "play-bevy"
 ]

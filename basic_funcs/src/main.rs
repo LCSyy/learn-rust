@@ -1,5 +1,13 @@
 //! Learn Rust - function basics.
 //! 
+//! ## 函数参数
+//! 
+//! 函数的参数默认是移动的，即将外部变量的所有权移动到函数体内，外部变量将不再合法。
+//! 
+//! ## 返回值
+//! 
+//! Rust的函数体中没有分号的表达式表示返回值。当然也可以使用比较传统的 `return` 。
+//! 
 //! ## 其他
 //! 
 //! 1. 函数参数 `mut a: &Object` 与 `a: &mut Object` 的区别？
@@ -31,6 +39,9 @@ fn main() {
     };
     mutable_borrow(&mut b3);
     println!("{}", b3.name);
+
+    let a = 1001;
+    println!("{}", is_number_bigger_than_thousand(a));
 }
 
 struct Commpund {
@@ -64,4 +75,13 @@ fn mutable_params(mut a: i32, mut b: Commpund) {
 // 可变引用。
 fn mutable_borrow(a: &mut Commpund) {
     a.name.push_str(" - I borrowed, and modified.");
+}
+
+// 返回值。
+fn is_number_bigger_than_thousand(a: i32) -> bool {
+    if a > 1000 {
+        true
+    } else {
+        false
+    }
 }
