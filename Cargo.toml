@@ -9,6 +9,8 @@ members = [
 
     "std_fs",
     
+    "math3d",
+    
     "play-async"
 ]
 
