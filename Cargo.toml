@@ -6,6 +6,7 @@ members = [
     "basic_types",
     "basic_funcs",
     "control_flows",
+    "generic_types",
 
     "std_fs",
     
