@@ -63,7 +63,52 @@ pub fn shell_sort<T:PartialOrd>(a: &mut [T]) {
 }
 
 /// 归并排序
-pub fn merge_sort<T: PartialOrd>(a: &mut [T]) {
-    // ...
-    println!("merge sort, element size: {}", a.len());
+/// 将有序子序列合并为一个有序序列。
+pub fn merge_sort<T: PartialOrd + Copy>(a: &mut [T]) {
+    let mut pairs: Vec<(usize,usize)> = Vec::new();
+    pairs.push((0,a.len()));
+
+    // 分解
+    // [b,e)
+    let mut cur_idx: usize = 0;
+    while cur_idx != pairs.len() {
+        let (b,e) = pairs[cur_idx];
+        if b != e && b + 1 < e {
+            let mid = (b + e) / 2;
+            pairs.push((b,mid));
+            pairs.push((mid,e));
+        }
+        cur_idx += 1;
+    }
+
+    while pairs.len() >= 2 {
+        let (right_begin, right_end) = pairs.pop().unwrap();
+        let (left_begin, left_end) = pairs.pop().unwrap();
+        let mut left_idx = left_begin;
+        let mut right_idx = right_begin;
+
+        let mut tmp_vec = Vec::new();
+
+        while left_idx < left_end || right_idx < right_end {
+            if left_idx >= left_end {
+                tmp_vec.push(a[right_idx]);
+                right_idx += 1;
+            } else if right_idx >= right_end {
+                tmp_vec.push(a[left_idx]);
+                left_idx += 1;
+            } else {
+                if a[left_idx] <= a[right_idx] {
+                    tmp_vec.push(a[left_idx]);
+                    left_idx += 1;
+                } else {
+                    tmp_vec.push(a[right_idx]);
+                    right_idx += 1;
+                }
+            }
+        }
+
+        for i in left_begin..right_end {
+            a[i] = tmp_vec[i - left_begin];
+        }
+    }
 }

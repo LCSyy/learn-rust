@@ -1,5 +1,6 @@
 //! 算法
-//! 排序
+//! ## 排序
+//! 
 //! - 选择
 //! - 冒泡
 //! - 插入
@@ -8,44 +9,74 @@
 //! - 快速
 //! - 堆
 //! - 基数
-//! 查找
+//! 
+//! ## 查找
+//! 
 //! - 顺序
 //! - 二分
 //! - ...
+//! 
+//! ## 递归与迭代
+//! 
 
+use rand;
 use algorithms::{
     selection_sort,
     bubble_sort,
     insertion_sort,
     shell_sort,
+    merge_sort,
 };
+
+const NUM_SIZE: usize = 100;
+
+fn random_arrays(c: usize) -> Vec<i32> {
+    let mut v = Vec::new();
+    for _ in 0..c {
+        v.push(rand::random::<i32>());
+    }
+
+    v
+}
 
 fn main() {
     println!("seletion:");
-    let mut a = [123,5,785,23,563542,1,54,47];
+    let mut a = random_arrays(NUM_SIZE);
     selection_sort(&mut a);
     for n in a.iter() {
-        println!("{}",n);
+        print!("{} ", n);
     }
+    println!("");
 
     println!("bubble sort:");
-    let mut b = [4,5,7825,3,35,3251,54,47,35,567];
-    bubble_sort(&mut b);
-    for n in b.iter() {
-        println!("{}",n);
+    let mut a = random_arrays(NUM_SIZE);
+    bubble_sort(&mut a);
+    for n in a.iter() {
+        print!("{} ", n);
     }
+    println!("");
 
     println!("insertion sort:");
-    let mut c = [235,36,373452,232,2535,3632,23425];
-    insertion_sort(&mut c);
-    for n in c.iter() {
-        println!("{}", n);
+    let mut a = random_arrays(NUM_SIZE);
+    insertion_sort(&mut a);
+    for n in a.iter() {
+        print!("{} ", n);
     }
+    println!("");
     
     println!("shell sort:");
-    let mut c = [235,36,373452,232,2535,3632,23425];
-    shell_sort(&mut c);
-    for n in c.iter() {
-        println!("{}", n);
+    let mut a = random_arrays(NUM_SIZE);
+    shell_sort(&mut a);
+    for n in a.iter() {
+        print!("{} ", n);
     }
+    println!("");
+
+    println!("merge sort:");
+    let mut a = random_arrays(NUM_SIZE*10);
+    merge_sort(&mut a);
+    for n in a.iter() {
+        print!("{} ", n);
+    }
+    println!("");
 }
