@@ -8,14 +8,11 @@ members = [
     "control_flows",
     "generic_types",
 
-    "std_fs",
-    
-    "math3d",
-    
-    "play-async"
+    "std_fs"
 ]
 
 exclude = [
+    "math3d",
     "play-actix",
     "learn-rust",
     "play-wgpu",

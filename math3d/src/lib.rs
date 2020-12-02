@@ -1,27 +1,38 @@
-use std::ops::Add;
+//! math3d
+//! 
+//! ## 2D
+//! 
+//! **基本单位** 点、向量。
+//! 
+//! ## 3D
+//! 
 
-pub struct Vector2D {
-    x: f32,
-    y: f32,
+pub mod math2d;
+
+pub trait EchoItem {
+    fn draw(&self);
 }
 
-impl Vector2D {
-    pub fn new(x: f32, y: f32) -> Self {
-        Vector2D { x, y }
-    }
+pub struct Rectangle {
+    x: i32,
+    y: i32,
+    w: i32,
+    h: i32,
+}
 
-    pub fn len(&self) -> f32 {
-        (self.x.powi(2) + self.y.powi(2)).sqrt()
+impl Rectangle {
+    pub fn new(x:i32, y:i32, w:i32, h:i32) -> Self {
+        Self {x,y,w,h}
     }
 }
 
-impl Add for Vector2D {
-    type Output = Vector2D;
-
-    fn add(self, other: Self) -> Self::Output {
-        Self {
-            x: self.x + other.x,
-            y: self.y + other.y,
+impl EchoItem for Rectangle {
+    fn draw(&self) {
+        for i in 0..self.w {
+            for j in 0..self.h {
+                print!("*");
+            }
+            println!("");
         }
     }
 }
