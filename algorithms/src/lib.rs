@@ -112,3 +112,9 @@ pub fn merge_sort<T: PartialOrd + Copy>(a: &mut [T]) {
         }
     }
 }
+
+/// 快速排序
+/// 根据一个中间值，将小于或等于该值的元素放到左侧，大于该值的元素放到右边。
+pub fn qsort<T: PartialOrd>(a: &mut [T]) {
+    println!("{}", a.len());
+}

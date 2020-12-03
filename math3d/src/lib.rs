@@ -30,7 +30,11 @@ impl EchoItem for Rectangle {
     fn draw(&self) {
         for i in 0..self.w {
             for j in 0..self.h {
-                print!("*");
+                if i == 0 || i == self.w - 1 || j == 0 || j == self.h - 1 {
+                    print!("*");
+                } else {
+                    print!(" ");
+                }
             }
             println!("");
         }
