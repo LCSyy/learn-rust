@@ -1,24 +1,3 @@
-//! 算法
-//! ## 排序
-//! 
-//! - 选择
-//! - 冒泡
-//! - 插入
-//! - 希尔
-//! - 归并
-//! - 快速
-//! - 堆
-//! - 基数
-//! 
-//! ## 查找
-//! 
-//! - 顺序
-//! - 二分
-//! - ...
-//! 
-//! ## 递归与迭代
-//! 
-
 use rand;
 use algorithms::{
     selection_sort,
@@ -26,6 +5,7 @@ use algorithms::{
     insertion_sort,
     shell_sort,
     merge_sort,
+    qsort,
 };
 
 const NUM_SIZE: usize = 100;
@@ -40,41 +20,49 @@ fn random_arrays(c: usize) -> Vec<i32> {
 }
 
 fn main() {
-    println!("seletion:");
-    let mut a = random_arrays(NUM_SIZE);
-    selection_sort(&mut a);
-    for n in a.iter() {
-        print!("{} ", n);
-    }
-    println!("");
+    // println!("seletion:");
+    // let mut a = random_arrays(NUM_SIZE);
+    // selection_sort(&mut a);
+    // for n in a.iter() {
+    //     print!("{} ", n);
+    // }
+    // println!("");
 
-    println!("bubble sort:");
-    let mut a = random_arrays(NUM_SIZE);
-    bubble_sort(&mut a);
-    for n in a.iter() {
-        print!("{} ", n);
-    }
-    println!("");
+    // println!("bubble sort:");
+    // let mut a = random_arrays(NUM_SIZE);
+    // bubble_sort(&mut a);
+    // for n in a.iter() {
+    //     print!("{} ", n);
+    // }
+    // println!("");
 
-    println!("insertion sort:");
-    let mut a = random_arrays(NUM_SIZE);
-    insertion_sort(&mut a);
-    for n in a.iter() {
-        print!("{} ", n);
-    }
-    println!("");
+    // println!("insertion sort:");
+    // let mut a = random_arrays(NUM_SIZE);
+    // insertion_sort(&mut a);
+    // for n in a.iter() {
+    //     print!("{} ", n);
+    // }
+    // println!("");
     
-    println!("shell sort:");
-    let mut a = random_arrays(NUM_SIZE);
-    shell_sort(&mut a);
-    for n in a.iter() {
-        print!("{} ", n);
-    }
-    println!("");
+    // println!("shell sort:");
+    // let mut a = random_arrays(NUM_SIZE);
+    // shell_sort(&mut a);
+    // for n in a.iter() {
+    //     print!("{} ", n);
+    // }
+    // println!("");
 
-    println!("merge sort:");
-    let mut a = random_arrays(NUM_SIZE*10);
-    merge_sort(&mut a);
+    // println!("merge sort:");
+    // let mut a = random_arrays(NUM_SIZE*10);
+    // merge_sort(&mut a);
+    // for n in a.iter() {
+    //     print!("{} ", n);
+    // }
+    // println!("");
+
+    println!("quick sort:");
+    let mut a = random_arrays(NUM_SIZE);
+    qsort(&mut a);
     for n in a.iter() {
         print!("{} ", n);
     }
