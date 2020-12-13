@@ -7,9 +7,10 @@ members = [
     "basic_funcs",
     "control_flows",
     "generic_types",
-    "error_handling",
+    "basic_crates",
 
-    "std_fs"
+    "std_fs",
+    "concurrency"
 ]
 
 exclude = [
